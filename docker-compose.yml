@@ -1,0 +1,20 @@
+version: '3.5'
+services:
+  app:
+    container_name: bank
+    image: bank
+    build: ./
+    environment:
+      - TZ=Asia/Saigon
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqldb
+  mysqldb:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_PASSWORD=root
+      - MYSQL_USER=muoi
+      - MYSQL_DB=bank
